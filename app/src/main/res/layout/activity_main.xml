@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    android:gravity="center" >
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imageView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/app_img"
+        android:layout_margin="10dp"
+        android:scrollbarAlwaysDrawVerticalTrack="true" />
+    <EditText
+        android:id="@+id/editTextText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:drawableLeft="@android:drawable/sym_action_email"
+        android:drawableTint="#3F51B5"
+        android:ems="10"
+        android:textAlignment="center"
+        android:inputType="textEmailAddress"
+        android:hint="Type Your Email ..."/>
+    <EditText
+        android:id="@+id/editTextText2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:drawableLeft="@android:drawable/ic_lock_lock"
+        android:drawableTint="#3F51B5"
+        android:ems="10"
+        android:textAlignment="center"
+        android:hint="Type Your Password ..."
+        android:inputType="textPassword" />
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:textSize="20sp"/>
+    <TextView
+        android:layout_marginTop="30dp"
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:text="register ?" />
+
+</LinearLayout>
