@@ -18,7 +18,7 @@
         android:layout_margin="10dp"
         android:scrollbarAlwaysDrawVerticalTrack="true" />
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/loginEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -29,7 +29,7 @@
         android:inputType="textEmailAddress"
         android:hint="Type Your Email ..."/>
     <EditText
-        android:id="@+id/editTextText2"
+        android:id="@+id/loginPswd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -40,14 +40,14 @@
         android:hint="Type Your Password ..."
         android:inputType="textPassword" />
     <Button
-        android:id="@+id/button"
+        android:id="@+id/loginSubmit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Submit"
         android:textSize="20sp"/>
     <TextView
         android:layout_marginTop="30dp"
-        android:id="@+id/textView"
+        android:id="@+id/loginRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20sp"

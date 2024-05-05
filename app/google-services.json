@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1084306765664",
+    "project_id": "formal-ember-394310",
+    "storage_bucket": "formal-ember-394310.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1084306765664:android:06768bca75bfbb9f30d005",
+        "android_client_info": {
+          "package_name": "com.example.quizapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3RwvlBnn7ClLcpmwjCHx8zo0T-pmM25w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

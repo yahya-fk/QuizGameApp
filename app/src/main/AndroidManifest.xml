@@ -2,9 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
+        android:enableOnBackInvokedCallback="true"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -13,31 +16,32 @@
         android:theme="@style/Theme.QuizApp"
         tools:targetApi="31">
         <activity
+            android:name=".Quiz4"
+            android:exported="false" />
+        <activity
+            android:name=".QuizMenu"
+            android:exported="false" />
+        <activity
             android:name=".Quiz1"
             android:exported="false" />
         <activity
             android:name=".Register"
             android:exported="false" />
         <activity
-            android:name=".Q5"
+            android:name=".Quiz5"
             android:exported="false" />
         <activity
-            android:name=".Q4"
+            android:name=".Quiz4$"
             android:exported="false" />
         <activity
-            android:name=".Q3"
+            android:name=".Quiz3"
             android:exported="false" />
         <activity
             android:name=".Score"
             android:exported="false" />
         <activity
-            android:name=".Q2"
+            android:name=".Quiz2"
             android:exported="false" />
-        <activity
-            android:name=".Activity1"
-            android:exported="false"
-            android:label="@string/title_activity_1"
-            android:theme="@style/Theme.QuizApp" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

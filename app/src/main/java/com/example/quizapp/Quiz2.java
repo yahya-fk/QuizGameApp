@@ -22,28 +22,27 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import org.w3c.dom.Text;
-
-public class Quiz1 extends AppCompatActivity {
+public class Quiz2 extends AppCompatActivity {
     private String correctReponse;
+    CountDownTimer countDownTimer;
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
-    private CountDownTimer countDownTimer;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quiz1);
+        setContentView(R.layout.activity_q2);
         final Button button = findViewById(R.id.button2);
         final RadioGroup radioGrp=findViewById(R.id.radioGrp);
         final Button submit=findViewById(R.id.submit);
         final TextView textCountdown = findViewById(R.id.text_countdown);
         Intent intent = getIntent();
         String type = intent.getStringExtra("Type");
+        final int[] score = {intent.getIntExtra("score", 0)};
         if(type==null){
             Intent i = new Intent(getApplicationContext(), QuizMenu.class);
             startActivity(i);
         }
-        DatabaseReference userReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://formal-ember-394310-default-rtdb.firebaseio.com/").child(type).child("Quiz1");
+
+        DatabaseReference userReference = FirebaseDatabase.getInstance().getReference().child(type).child("Quiz2");
 
         userReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -93,12 +92,12 @@ public class Quiz1 extends AppCompatActivity {
 
                         public void onTick(long millisUntilFinished) {
                             // Mettez à jour le texte du compte à rebours à chaque tick
-                            textCountdown.setText(" "+ (millisUntilFinished / 1000));
+                            textCountdown.setText("Seconds remaining: " + millisUntilFinished / 1000);
                         }
 
                         public void onFinish() {
                             textCountdown.setText(correctReponse);
-                            Intent intent = new Intent(Quiz1.this, Quiz2.class);
+                            Intent intent = new Intent(Quiz2.this, Quiz3.class);
                             intent.putExtra("Type",type);
                             intent.putExtra("score", 0);
                             startActivity(intent);
@@ -119,18 +118,18 @@ public class Quiz1 extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int score = 0;
                 int idb = radioGrp.getCheckedRadioButtonId();
                 if (idb != -1) {
                     RadioButton selectedRadioButton = findViewById(idb);
                     String selectedText = selectedRadioButton.getText().toString();
 
                     if (selectedText.equals(correctReponse)) {
-                        score++;
+                        Log.d("TAG", "onClick: "+score[0]);
+                        score[0]++;
                     }
-                    Intent intent = new Intent(Quiz1.this, Quiz2.class);
+                    Intent intent = new Intent(Quiz2.this, Quiz3.class);
                     intent.putExtra("Type",type);
-                    intent.putExtra("score", score);
+                    intent.putExtra("score", score[0]);
                     countDownTimer.cancel();
                     startActivity(intent);
                 } else {
@@ -154,13 +153,18 @@ public class Quiz1 extends AppCompatActivity {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser == null) {
-            Intent intent = new Intent(Quiz1.this, MainActivity.class);
+            Intent intent = new Intent(Quiz2.this, MainActivity.class);
             startActivity(intent);
         }
         else {
             final TextView textView = findViewById(R.id.email);
             textView.setText(currentUser.getEmail());
         }
+    }
+    private void logout() {
+        FirebaseAuth.getInstance().signOut();
+        startActivity(new Intent(Quiz2.this, MainActivity.class));
+        finish();
     }
 
     @Override
@@ -170,12 +174,5 @@ public class Quiz1 extends AppCompatActivity {
         if (countDownTimer != null) {
             countDownTimer.cancel();
         }
-    }
-
-
-    private void logout() {
-        FirebaseAuth.getInstance().signOut();
-        startActivity(new Intent(Quiz1.this, MainActivity.class));
-        finish();
     }
 }
